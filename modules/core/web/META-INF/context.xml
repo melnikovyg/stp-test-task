@@ -5,10 +5,10 @@
               maxTotal="20"
               maxWaitMillis="5000"
               name="jdbc/CubaDS"
-              password="cuba"
+              password="scrumit"
               type="javax.sql.DataSource"
               url="jdbc:postgresql://localhost/scrumit"
-              username="cuba"/>
+              username="scrumit"/>
     <!-- Switch off session serialization -->
     <Manager pathname=""/>
     <!--<Resource driverClassName="org.hsqldb.jdbc.JDBCDriver"

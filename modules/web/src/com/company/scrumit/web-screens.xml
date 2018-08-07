@@ -40,4 +40,10 @@
             template="com/company/scrumit/web/meeting/meeting-browse.xml"/>
     <screen id="scrumit$ContactsStatus.browse"
             template="com/company/scrumit/web/contactsstatus/contacts-status-browse.xml"/>
+    <screen id="scrumit$LabourIntensity.browse"
+            template="com/company/scrumit/web/labourintensity/labour-intensity-browse.xml"/>
+    <screen id="scrumit$LabourIntensity.edit"
+            template="com/company/scrumit/web/labourintensity/labour-intensity-edit.xml"/>
+    <screen id="planningPoker"
+            template="com/company/scrumit/web/screens/task-browse.xml"/>
 </screen-config>

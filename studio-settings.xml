@@ -13,4 +13,7 @@
                 presentSize="1920x1080"
                 reference="com/company/scrumit/web/task/tasklist.xml"/>
     </screenDesigner>
+    <settings>
+        <showInfoOutdatedScheme>false</showInfoOutdatedScheme>
+    </settings>
 </studio>

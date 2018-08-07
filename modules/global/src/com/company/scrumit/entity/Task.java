@@ -11,6 +11,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
+import com.haulmont.cuba.core.entity.annotation.OnDelete;
+import com.haulmont.cuba.core.global.DeletePolicy;
+import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
 
 @Listeners("scrumit_TaskListener")
 @NamePattern("%s|shortdesc")
@@ -22,6 +25,10 @@ public class Task extends StandardEntity {
     @NotNull
     @Column(name = "SHORTDESC", nullable = false, unique = true, length = 50)
     protected String shortdesc;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "SCORE_ID")
+    protected LabourIntensity score;
 
     @Column(name = "DONE")
     protected Boolean done;
@@ -92,6 +99,18 @@ public class Task extends StandardEntity {
         inverseJoinColumns = @JoinColumn(name = "SPRINT_ID"))
     @ManyToMany
     protected List<Sprint> sprints;
+
+
+
+
+    public void setScore(LabourIntensity score) {
+        this.score = score;
+    }
+
+    public LabourIntensity getScore() {
+        return score;
+    }
+
 
     public void setControl(Boolean control) {
         this.control = control;

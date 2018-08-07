@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  ~ Copyright (c) 2017 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://poker"
+        class="com.company.scrumit.web.screens.PlanningPoker"
+        focusComponent="tasks"
+        lookupComponent="tasks"
+        messagesPack="com.company.scrumit.web.screens">
+    <dsContext>
+        <datasource id="taskDs"
+                    class="com.company.scrumit.entity.Task"
+                    view="task-view-poker"/>
+        <hierarchicalDatasource id="tasksDs"
+                                class="com.company.scrumit.entity.Task"
+                                hierarchyProperty="task"
+                                view="task-view-poker">
+            <query>
+                <![CDATA[select e from scrumit$Task e]]>
+            </query>
+        </hierarchicalDatasource>
+        <collectionDatasource id="labourIntensitiesDs"
+                              class="com.company.scrumit.entity.LabourIntensity"
+                              refreshMode="NEVER"/>
+    </dsContext>
+    <actions>
+        <action id="save"
+                caption="mainMsg://actions.Ok"
+                icon="icons/ok.png"
+                invoke="save"
+                shortcut="CTRL-ENTER"/>
+        <action id="cancel"
+                caption="mainMsg://actions.Cancel"
+                description="Esc"
+                icon="icons/cancel.png"
+                invoke="cancel"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <split id="split"
+               height="736px"
+               orientation="horizontal"
+               reversePosition="true"
+               width="100%">
+            <vbox id="lookupBox"
+                  expand="tasks"
+                  height="100%"
+                  margin="false,true,false,false"
+                  spacing="true">
+                <filter id="filter"
+                        applyTo="tasks"
+                        datasource="tasksDs">
+                    <properties include=".*"/>
+                </filter>
+                <treeTable id="tasks"
+                           width="100%">
+                    <actions>
+                        <action id="create"/>
+                        <action id="edit"/>
+                        <action id="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="shortdesc"/>
+                        <column id="score"/>
+                        <column id="done"/>
+                        <column id="control"/>
+                        <column id="proirity"/>
+                        <column id="description"/>
+                        <column id="task"/>
+                        <column id="top"/>
+                    </columns>
+                    <rows datasource="tasksDs"/>
+                    <rowsCount/>
+                    <buttonsPanel id="taskButtonsPanel"
+                                  alwaysVisible="true">
+                        <button id="createBtn"
+                                action="tasks.create"/>
+                        <button id="editBtn"
+                                action="tasks.edit"/>
+                        <button id="removeBtn"
+                                action="tasks.remove"/>
+                    </buttonsPanel>
+                </treeTable>
+            </vbox>
+            <vbox id="editBox"
+                  height="100%"
+                  margin="false,false,false,true"
+                  spacing="true">
+                <table id="scoresTable"
+                       height="273px"
+                       width="384px">
+                    <actions>
+                        <action id="addButton"
+                                enable="false"
+                                invoke="onAddButton"/>
+                        <action id="deleteButton"
+                                enable="false"
+                                invoke="onDeleteButton"/>
+                    </actions>
+                    <columns>
+                        <column id="name"/>
+                        <column id="value"/>
+                    </columns>
+                    <rows datasource="labourIntensitiesDs"/>
+                    <buttonsPanel id="scoreButtonsPanel">
+                        <button id="scoreAddButton"
+                                action="scoresTable.addButton"
+                                caption="msg://Add"/>
+                        <button id="scoreDeleteButton"
+                                action="scoresTable.deleteButton"
+                                caption="msg://Delete"/>
+                        <label id="taskCurrentLabel"
+                               height="32px"
+                               value="---"
+                               width="230px"/>
+                    </buttonsPanel>
+                </table>
+            </vbox>
+        </split>
+        <buttonsPanel align="BOTTOM_LEFT">
+            <button id="saveButton"
+                    action="save"/>
+            <button id="cancelButton"
+                    action="cancel"/>
+        </buttonsPanel>
+    </layout>
+</window>

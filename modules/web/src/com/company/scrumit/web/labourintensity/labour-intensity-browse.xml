@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.scrumit.web.labourintensity.LabourIntensityBrowse"
+        focusComponent="labourIntensitiesTable"
+        lookupComponent="labourIntensitiesTable"
+        messagesPack="com.company.scrumit.web.labourintensity">
+    <dsContext>
+        <groupDatasource id="labourIntensitiesDs"
+                         class="com.company.scrumit.entity.LabourIntensity"
+                         view="_local">
+            <query>
+                <![CDATA[select e from scrumit$LabourIntensity e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="labourIntensitiesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="labourIntensitiesTable"
+                datasource="labourIntensitiesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="labourIntensitiesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="value"/>
+            </columns>
+            <rows datasource="labourIntensitiesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="labourIntensitiesTable.create"/>
+                <button id="editBtn"
+                        action="labourIntensitiesTable.edit"/>
+                <button id="removeBtn"
+                        action="labourIntensitiesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

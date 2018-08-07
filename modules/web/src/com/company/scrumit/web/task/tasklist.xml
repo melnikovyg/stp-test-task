@@ -73,6 +73,7 @@
                         <column id="control"/>
                         <column id="description"
                                 maxTextLength="100"/>
+                        <column id="score"/>
                     </columns>
                     <rows datasource="tasksDs"/>
                     <rowsCount/>
@@ -121,6 +122,7 @@
                             <field property="amount"/>
                             <field property="performer"/>
                             <field property="control"/>
+                            <field property="score"/>
                         </column>
                     </fieldGroup>
                 </scrollBox>

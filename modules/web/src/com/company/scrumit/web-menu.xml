@@ -5,10 +5,12 @@
         <item screen="massInput"/>
         <item screen="scrumit$Task.performerTasks"/>
         <item screen="sprintPlanning"/>
+        <item screen="planningPoker"/>
     </menu>
     <menu id="refs"
           insertBefore="administration">
         <item screen="scrumit$Task.list"/>
+        <item screen="scrumit$LabourIntensity.browse"/>
         <item screen="scrumit$Sprint.browse"/>
         <item screen="scrumit$Meeting.browse"/>
         <item screen="scrumit$Contact.browse"/>
